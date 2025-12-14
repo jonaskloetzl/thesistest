@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Website for MonoDyGauBench</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Monocular Dynamic Gaussian Splatting: Fast, Brittle, and Scene Complexity Rules">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="Monocular Dynamic Gaussian Splatting: Fast, Brittle, and Scene Complexity Rules">
+    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧇</text></svg>"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    <script defer src="js/fontawesome.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/synced_video_selector.js"></script>
+    <script src="js/video_comparison.js"></script>
+
+    <style>
+        .bibtexsection {
+            font-family: "Courier New", "Courier", monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: left;
+            overflow-x: auto;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .bibtexsection {
+                font-size: 12px;
+                padding: 15px;
+            }
+        }
+
+        .jumbotron {
+            text-align: center;
+        }
+
+        .btn {
+            font-size: 18px;
+        }
+
+        .jumbotron h2 {
+            font-size: 36px;
+        }
+
+        .section {
+            padding-top: 30px;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center"> <!-- Added text-center class -->
+            <h2 id="title">
+                Monocular Dynamic Gaussian Splatting: Fast, Brittle, and Scene Complexity Rules
+            </h2> <!-- Changed h1 closing tag to h2 -->
+            <div class="row justify-content-center" style="font-size: 30px; color:red;">
+                TMLR 2025
+            </div>
+            <hr>
+
+            <div class="row justify-content-center"> <!-- Added row with center justification -->
+                <!-- First row of authors -->
+                <div>
+                    <a href="https://lynl7130.github.io/">
+                        <h4 style="display: inline; margin: 0 10px;">Yiqing Liang<sup>1</sup></h4>
+                    </a>
+                    <a href="https://mmehas.github.io/">
+                        <h4 style="display: inline; margin: 0 10px;">Mikhail Okunev<sup>1</sup></h4>
+                    </a>
+                    <a href="https://mikacuy.github.io/">
+                        <h4 style="display: inline; margin: 0 10px;">Mikaela Angelina Uy<sup>2,3</sup></h4>
+                    </a>
+                    <a href="https://www.linkedin.com/in/runfeng-l-a41b6a204/">
+                        <h4 style="display: inline; margin: 0 10px;">Runfeng Li<sup>1</sup></h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row justify-content-center"> <!-- Added row with center justification -->
+                <!-- Second row of authors -->
+                <div>
+                    <a href="https://profiles.stanford.edu/leonidas-guibas">
+                        <h4 style="display: inline; margin: 0 10px;">Leonidas Guibas<sup>3</sup></h4>
+                    </a>
+                    <a href="https://jamestompkin.com/">
+                        <h4 style="display: inline; margin: 0 10px;">James Tompkin<sup>1</sup></h4>
+                    </a>
+                    <a href="https://adamharley.com/">
+                        <h4 style="display: inline; margin: 0 10px;">Adam W Harley<sup>3</sup></h4>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <p class="mt-4"> <!-- Using Bootstrap spacing utility -->
+                <sup>1</sup>Brown University &nbsp;&nbsp;
+                <sup>2</sup>NVIDIA Research &nbsp;&nbsp;
+                <sup>3</sup>Stanford University &nbsp;&nbsp;
+            </p>
+
+            <a class="btn btn-primary"
+                href="https://1drv.ms/f/c/4dd35d8ee847a247/EpmindtZTxxBiSjYVuaaiuUBr7w3nOzEl6GjrWjmVPuBFw?e=cW5gg1">Dataset</a>
+            <a class="btn btn-primary" href="https://arxiv.org/abs/2412.04457">Arxiv</a>
+            <a class="btn btn-primary" href="https://github.com/lynl7130/MonoDyGauBench_code">Code</a>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+
+    <div class="text-justify">
+        <div class="container">
+            <div class="section">
+                <div class="col justify-content-center text-center">
+                    <div class="col-sm-12">
+                        <img src="imgs/GS_overview2.png" style="width:80%">
+                    </div>
+                </div>
+                <p class="text-center" style="font-size: 1.2em">
+                    <b>Dynamic Gaussians</b> typically originate from static 3DGS by adding a <span
+                        style="color:red"><b>Dynamics module</b></span>.
+                </p>
+            </div>
+
+            <div class="section col-sm-12 ">
+                <h2 class="text-center">Abstract</h2>
+                <hr>
+                <div style="display: flex; justify-content: center;"> <!-- Wrapper to center the paragraph -->
+                    <p style="max-width: 1200px;"> <!-- Only justify the text -->
+                        Recent progress in dynamic scene reconstruction has largely been driven by extending existing 3D
+                        representations, such as NeRF and, more recently, 3D Gaussian Splatting, into the dynamic
+                        domain. While these approaches have demonstrated impressive results, many current dynamic
+                        Gaussian Splatting methods rely solely on RGB supervision, leaving the inherently ill-posed
+                        nature of the task largely unresolved.
+                        Incorporating depth priors might therefore reduce depth ambiguities and improve reconstruction
+                        quality, particularly for explicit representations such as Gaussian Splatting.
+                        However, the practical benefits within existing monocular dynamic reconstruction pipelines
+                        remain largely unexplored.
+                        Leveraging the standardized Monocular Dynamic Gaussian Splatting evaluation framework,
+                        this thesis examines how depth priors can enhance state-of-the-art monocular dynamic 3D
+                        reconstruction methods through three major contributions:
+                        First, an extensive evaluation of modern monocular depth prediction models exposes the most
+                        suitable for reconstruction.
+                        Then, depth supervision is integrated into the reconstruction pipeline through a differentiable
+                        inverse-depth rendering mechanism and a specifically designed loss function for depth maps using
+                        an adaptive weighting scheme.
+                        Lastly, a depth guided initialization procedure is presented for the dynamic foreground area,
+                        enabling a more informed placement of Gaussian primitives at the start of training.
+                        Our experiments show that, for two out of the three investigated methods, depth-based
+                        supervision and initialization consistently enhances reconstruction quality, with improvements
+                        in PSNR of around 0.3 dB to nearly 1 dB. However, the effectiveness is highly dependent on
+                        the underlying motion model, dataset characteristics and depth prediction quality, indicating
+                        that depth integration requires careful and model-specific assessment considering both the prior
+                        quality and the model’s representation of motion.
+                        <!--Gaussian splatting methods are emerging as a popular approach for converting multi-view image
+                        data into scene representations that allow view synthesis. In particular, there is interest in
+                        enabling view synthesis for <strong>dynamic</strong> scenes using only
+                        <strong>monocular</strong> input data---an ill-posed and challenging problem. The fast pace of
+                        work in this area has produced multiple simultaneous papers that claim to work best, which
+                        cannot all be true. In this work, we organize, benchmark, and analyze many
+                        Gaussian-splatting-based methods, providing apples-to-apples comparisons that prior works have
+                        lacked. We use multiple existing datasets and a new instructive synthetic dataset designed to
+                        isolate factors that affect reconstruction quality.-->
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="text-center">Citation</h2>
+                            <hr>
+
+                            <div class="bibtexsection">
+                                @article{
+                                liang2025monocular,
+                                title={Monocular Dynamic Gaussian Splatting: Fast, Brittle, and Scene Complexity Rules},
+                                author={Yiqing Liang and Mikhail Okunev and Mikaela Angelina Uy and Runfeng Li and
+                                Leonidas Guibas and James Tompkin and Adam W Harley},
+                                journal={Transactions on Machine Learning Research},
+                                issn={2835-8856},
+                                year={2025},
+                                url={https://openreview.net/forum?id=fzmw8Joug4},
+                                note={Survey Certification}
+                                }
+                            </div>
+
+                        </div>
+
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="section">
+                <h2 class="text-center"><b>Qualitative Results</b></h2>
+                <hr>
+                <div class="container" id="main" style="width:100%">
+                    <br>
+                    <div class="row text-center" style="background-color:rgb(255, 255, 255);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2>Instructive Dataset Results</h2>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- SlidingCube Start -->
+                    <div class="row text-center" style="background-color:rgb(240, 240, 240);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> SlidingCube </h3><br>
+                            <div class="text-center ">
+                                <div style="display: inline-block;">
+                                    <ul class="nav nav-pills center-pills">
+                                        <li class="motion-range-pill-slide active" data-value="motion_range_0"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_slide, 'sliding_cube')">
+                                            <a>0</a>
+                                        </li>
+                                        <li class="motion-range-pill-slide" data-value="motion_range_5"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_slide, 'sliding_cube')">
+                                            <a>5</a>
+                                        </li>
+                                        <li class="motion-range-pill-slide" data-value="motion_range_10"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_slide, 'sliding_cube')">
+                                            <a>10</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="sliding_cube" loop playsinline
+                                        autoplay muted>
+                                        <source src="videos/sliding_cube/motion_range_0_baseline_1.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="text-center " id="baseline-pills-slide">
+                                    <div style="display: inline-block;">
+                                        <ul class="nav nav-pills center-pills">
+                                            <li class="baseline-pill-slide active" data-value="baseline_1"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_slide, this, 'sliding_cube')">
+                                                <a>1</a>
+                                            </li>
+                                            <li class="baseline-pill-slide" data-value="baseline_3"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_slide, this, 'sliding_cube')">
+                                                <a>3</a>
+                                            </li>
+                                            <li class="baseline-pill-slide" data-value="baseline_5"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_slide, this, 'sliding_cube')">
+                                                <a>5</a>
+                                            </li>
+                                            <li class="baseline-pill-slide" data-value="baseline_10"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_slide, this, 'sliding_cube')">
+                                                <a>10</a>
+                                            </li>
+                                            <li class="baseline-pill-slide" data-value="baseline_20"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_slide, this, 'sliding_cube')">
+                                                <a>20</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <p class="text-justify" style="text-align: center;">
+                                        Click to select different cube motion range {0, 5, 10} and camera baseline range
+                                        {1, 3, 5, 10, 20}.
+                                    </p>
+                                    <br>
+                                    <script>
+                                        activeMotionRangePill_slide = document.querySelector('.motion-range-pill-slide.active-pill');
+                                        activeBaselinePill_slide = document.querySelector('.baseline-pill-slide.active-pill');
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SlidingCube End -->
+
+
+                    <!-- RotatingCube Start -->
+                    <div class="row text-center" style="background-color:rgb(255, 255, 255);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> RotatingCube </h3><br>
+                            <div class="text-center ">
+                                <div style="display: inline-block;">
+                                    <ul class="nav nav-pills center-pills">
+                                        <li class="motion-range-pill-rot active" data-value="motion_range_0"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_rot, 'rotating_cube')">
+                                            <a>0</a>
+                                        </li>
+                                        <li class="motion-range-pill-rot" data-value="motion_range_5"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_rot, 'rotating_cube')">
+                                            <a>5</a>
+                                        </li>
+                                        <li class="motion-range-pill-rot" data-value="motion_range_10"
+                                            onclick="selectCustomSceneVideo(this, activeBaselinePill_rot, 'rotating_cube')">
+                                            <a>10</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="rotating_cube" loop playsinline
+                                        autoplay muted>
+                                        <source src="videos/rotating_cube/motion_range_0_baseline_1.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="text-center " id="baseline-pills-rot">
+                                    <div style="display: inline-block;">
+                                        <ul class="nav nav-pills center-pills">
+                                            <li class="baseline-pill-rot active" data-value="baseline_1"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_rot, this, 'rotating_cube')">
+                                                <a>1</a>
+                                            </li>
+                                            <li class="baseline-pill-rot" data-value="baseline_3"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_rot, this, 'rotating_cube')">
+                                                <a>3</a>
+                                            </li>
+                                            <li class="baseline-pill-rot" data-value="baseline_5"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_rot, this, 'rotating_cube')">
+                                                <a>5</a>
+                                            </li>
+                                            <li class="baseline-pill-rot" data-value="baseline_10"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_rot, this, 'rotating_cube')">
+                                                <a>10</a>
+                                            </li>
+                                            <li class="baseline-pill-rot" data-value="baseline_20"
+                                                onclick="selectCustomSceneVideo(activeMotionRangePill_rot, this, 'rotating_cube')">
+                                                <a>20</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <p class="text-justify" style="text-align: center;">
+                                        Click to select different cube motion range {0, 5, 10} and camera baseline range
+                                        {1, 3, 5, 10, 20}.
+                                    </p>
+                                    <br>
+                                    <script>
+                                        activeMotionRangePill_rot = document.querySelector('.motion-range-pill-rot.active-pill');
+                                        activeBaselinePill_rot = document.querySelector('.baseline-pill-rot.active-pill');
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RotatingCube End -->
+
+                    <br>
+                    <div class="row text-center" style="background-color:rgb(255, 255, 255);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2>Existing Dataset Results</h2>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- DNeRF Start -->
+                    <div class="row text-center" style="background-color:rgb(240, 240, 240);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> DNeRF </h3><br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="dnerf" loop playsinline autoplay
+                                        muted>
+                                        <source src="videos/DNeRF/bouncingballs.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="pill-row scene-pills" id="scene-pills-dnerf">
+                                    <span class="pill scene-pill-dnerf active" data-value="bouncingballs"
+                                        onclick="selectRealWorldSceneVideo(this, 'DNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/DNeRF/bouncingballs.png"
+                                            alt="bouncingballs" width="64">
+                                    </span>
+                                    <span class="pill scene-pill-dnerf" data-value="standup"
+                                        onclick="selectRealWorldSceneVideo(this, 'DNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/DNeRF/standup.png" alt="standup"
+                                            width="64">
+                                    </span>
+                                    <span class="pill scene-pill-dnerf" data-value="trex"
+                                        onclick="selectRealWorldSceneVideo(this, 'DNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/DNeRF/trex.png" alt="trex"
+                                            width="64">
+                                    </span>
+                                </div>
+                                <br>
+                                <p class="text-justify" style="text-align: center;">
+                                    Click to select different scenes.
+                                </p>
+                                <br>
+                                <script>
+                                    activeDNeRFScene = document.querySelector('.scene-pill-dnerf.active-pill');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DNeRF End -->
+
+
+                    <!-- HyperNeRF Start -->
+                    <div class="row text-center" style="background-color:rgb(255, 255, 255);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> HyperNeRF </h3><br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="hypernerf" loop playsinline
+                                        autoplay muted>
+                                        <source src="videos/HyperNeRF/vrig-peel-banana.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="pill-row scene-pills" id="scene-pills-hypernerf">
+                                    <span class="pill scene-pill-hypernerf active" data-value="vrig-peel-banana"
+                                        onclick="selectRealWorldSceneVideo(this, 'HyperNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/HyperNeRF/vrig-peel-banana.png"
+                                            alt="vrig-peel-banana" width="64">
+                                    </span>
+                                    <span class="pill scene-pill-hypernerf" data-value="torchocolate"
+                                        onclick="selectRealWorldSceneVideo(this, 'HyperNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/HyperNeRF/torchocolate.png"
+                                            alt="torchocolate" width="64">
+                                    </span>
+                                    <span class="pill scene-pill-hypernerf" data-value="espresso"
+                                        onclick="selectRealWorldSceneVideo(this, 'HyperNeRF')">
+                                        <img class="thumbnail-img" src="thumbnails/HyperNeRF/espresso.png"
+                                            alt="espresso" width="64">
+                                    </span>
+                                </div>
+                                <br>
+                                <p class="text-justify" style="text-align: center;">
+                                    Click to select different scenes.
+                                </p>
+                                <br>
+                                <script>
+                                    activeHyperNeRFScene = document.querySelector('.scene-pill-hypernerf.active');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- HyperNeRF End -->
+
+
+                    <!-- Nerfies Start -->
+                    <div class="row text-center" style="background-color:rgb(240, 240, 240);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> Nerfies </h3><br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="nerfies" loop playsinline autoplay
+                                        muted>
+                                        <source src="videos/Nerfies/toby-sit.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="pill-row scene-pills" id="scene-pills-nerfies">
+                                    <span class="pill scene-pill-nerfies active" data-value="toby-sit"
+                                        onclick="selectRealWorldSceneVideo(this, 'Nerfies')">
+                                        <img class="thumbnail-img" src="thumbnails/Nerfies/toby-sit.png" alt="toby-sit"
+                                            width="64">
+                                    </span>
+                                    <span class="pill scene-pill-nerfies" data-value="curls"
+                                        onclick="selectRealWorldSceneVideo(this, 'Nerfies')">
+                                        <img class="thumbnail-img" src="thumbnails/Nerfies/curls.png" alt="curls"
+                                            width="64">
+                                    </span>
+                                    <span class="pill scene-pill-nerfies" data-value="tail"
+                                        onclick="selectRealWorldSceneVideo(this, 'Nerfies')">
+                                        <img class="thumbnail-img" src="thumbnails/Nerfies/tail.png" alt="tail"
+                                            width="64">
+                                    </span>
+                                </div>
+                                <br>
+                                <p class="text-justify" style="text-align: center;">
+                                    Click to select different scenes.
+                                </p>
+                                <br>
+                                <script>
+                                    activeNerfiesScene = document.querySelector('.scene-pill-nerfies.active');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nerfies End -->
+
+
+                    <!-- iPhone Start -->
+                    <div class="row text-center" style="background-color:rgb(255, 255, 255);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> iPhone </h3><br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="iphone" loop playsinline autoplay
+                                        muted>
+                                        <source src="videos/iPhone/apple.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="pill-row scene-pills" id="scene-pills-iphone">
+                                    <span class="pill scene-pill-iphone active" data-value="apple"
+                                        onclick="selectRealWorldSceneVideo(this, 'iPhone')">
+                                        <img class="thumbnail-img" src="thumbnails/iPhone/apple.png" alt="apple"
+                                            width="64">
+                                    </span>
+                                    <span class="pill scene-pill-iphone" data-value="mochi-high-five"
+                                        onclick="selectRealWorldSceneVideo(this, 'iPhone')">
+                                        <img class="thumbnail-img" src="thumbnails/iPhone/mochi-high-five.png"
+                                            alt="mochi-high-five" width="64">
+                                    </span>
+                                    <span class="pill scene-pill-iphone" data-value="paper-windmill"
+                                        onclick="selectRealWorldSceneVideo(this, 'iPhone')">
+                                        <img class="thumbnail-img" src="thumbnails/iPhone/paper-windmill.png"
+                                            alt="paper-windmill" width="64">
+                                    </span>
+                                </div>
+                                <br>
+                                <p class="text-justify" style="text-align: center;">
+                                    Click to select different scenes.
+                                </p>
+                                <br>
+                                <script>
+                                    activeIPhoneScene = document.querySelector('.scene-pill-iphone.active');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone End -->
+
+
+                    <!-- NeRF-DS Start -->
+                    <div class="row text-center" style="background-color:rgb(240, 240, 240);">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3> NeRF-DS </h3><br>
+
+                            <div class="text-center">
+                                <div class="video-container">
+                                    <video class="video" style="max-width: 100%;" id="nerf-ds" loop playsinline autoplay
+                                        muted>
+                                        <source src="videos/NeRF-DS/as.mp4">
+                                        </source>
+                                    </video>
+                                </div>
+
+                                <div class="pill-row scene-pills" id="scene-pills-nerf-ds">
+                                    <span class="pill scene-pill-nerf-ds active" data-value="as"
+                                        onclick="selectRealWorldSceneVideo(this, 'NeRF-DS')">
+                                        <img class="thumbnail-img" src="thumbnails/NeRF-DS/as.png" alt="as" width="64">
+                                    </span>
+                                    <span class="pill scene-pill-nerf-ds" data-value="sieve"
+                                        onclick="selectRealWorldSceneVideo(this, 'NeRF-DS')">
+                                        <img class="thumbnail-img" src="thumbnails/NeRF-DS/sieve.png" alt="sieve"
+                                            width="64">
+                                    </span>
+                                    <span class="pill scene-pill-nerf-ds" data-value="plate"
+                                        onclick="selectRealWorldSceneVideo(this, 'NeRF-DS')">
+                                        <img class="thumbnail-img" src="thumbnails/NeRF-DS/plate.png" alt="plate"
+                                            width="64">
+                                    </span>
+                                </div>
+                                <br>
+                                <p class="text-justify" style="text-align: center;">
+                                    Click to select different scenes.
+                                </p>
+                                <br>
+                                <script>
+                                    activeNeRFDSScene = document.querySelector('.scene-pill-nerf-ds.active');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- NeRF-DS End -->
+                </div>
+
+                <!-- bibtex Start -->
+                <div class="row" style="background-color:rgb(255, 255, 255);">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h3>
+                        </h3>
+                        <div class="form-group col-md-10 col-md-offset-1" style="color:white">
+                            <textarea id="bibtex" class="form-control" readonly>
+          </textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- bibtex End -->
+
+            </div>
+        </div>
+
+
+</body>
+
+</html>
